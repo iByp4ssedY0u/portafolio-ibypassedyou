@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portafolio de iByp4ssedY0u_</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@500;600;700&display=swap">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  [hidden]{display:none!important}
+  :root{
+    --bg:#ECEAF1;
+    --surface:#F8F7FB;
+    --ink:#1A1622;
+    --muted:#5A5468;
+    --line:#D6D2DF;
+    --accent:#9C5A00;
+    --accent-fill:#FFAA00;
+    --accent-on:#1A1300;
+    --focus:#9C5A00;
+    --stage-a:#2A2338;
+    --stage-b:#13101A;
+    --stage-edge:#2A2535;
+    --chip:#0C0B10;
+    --chk-a:#8A818A;
+    --chk-b:#262626;
+    --display:"Pixelify Sans", "Courier New", ui-monospace, monospace;
+    --body:"Chivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      color-scheme:dark;
+      --bg:#121018;
+      --surface:#1A1722;
+      --ink:#ECE9F3;
+      --muted:#A49EB4;
+      --line:#2D2938;
+      --accent:#FFAA00;
+      --focus:#FFAA00;
+      --stage-a:#252030;
+      --stage-b:#0E0C13;
+      --stage-edge:#2D2938;
+    }
+  }
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#121018;
+    --surface:#1A1722;
+    --ink:#ECE9F3;
+    --muted:#A49EB4;
+    --line:#2D2938;
+    --accent:#FFAA00;
+    --focus:#FFAA00;
+    --stage-a:#252030;
+    --stage-b:#0E0C13;
+    --stage-edge:#2D2938;
+  }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.55;
+    padding-inline:20px;
+    padding-block:0;
+  }
+  .wrap{max-width:1080px;margin-inline:auto;padding-block:48px 80px;display:grid;gap:64px}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;align-items:center}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0}
+  h1{
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(2.2rem,6.2vw,4.1rem);line-height:1;letter-spacing:-.01em;
+    margin:14px 0 18px;overflow-wrap:anywhere;text-wrap:balance;
+  }
+  .intro{margin:0;max-width:44ch;font-size:1.1rem;color:var(--ink)}
+  .facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 20px;margin:28px 0 0;padding:18px 0 0;border-top:1px solid var(--line)}
+  .facts div{display:grid;gap:6px;align-content:start}
+  .facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .facts dd{margin:0;font-weight:500;font-size:1.05rem;font-variant-numeric:tabular-nums}
+  .nickrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:28px}
+  .nick{font-family:var(--mono);font-size:.95rem;padding:8px 12px;background:var(--surface);border:1px solid var(--line);user-select:all}
+
+  /* Minecraft chat-style rank tags */
+  .mc{
+    display:inline-block;font-family:var(--display);font-weight:500;font-size:.98rem;line-height:1.2;
+    color:var(--mc);text-shadow:2px 2px 0 var(--mcs);
+    background:var(--chip);padding:3px 9px 4px;letter-spacing:.02em;white-space:nowrap;
+  }
+  .mc.srmod{--mc:#FFAA00;--mcs:#3F2A00}
+  .mc.mod{--mc:#55FFFF;--mcs:#153F3F}
+
+  /* Buttons */
+  button{font:inherit;cursor:pointer}
+  .btn,.tog{
+    font-family:var(--body);font-weight:500;font-size:.92rem;
+    padding:8px 14px;border:2px solid var(--line);background:transparent;color:var(--ink);
+    border-radius:0;transition:background .15s,border-color .15s,color .15s;
+  }
+  .btn:hover,.tog:hover{border-color:var(--muted)}
+  .tog[aria-pressed="true"]{background:var(--accent-fill);border-color:var(--accent-fill);color:var(--accent-on)}
+  :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+  /* 3D viewer */
+  .viewer{margin:0;display:grid;gap:12px;min-width:0}
+  .chk{height:8px;background:repeating-conic-gradient(var(--chk-a) 0 25%, var(--chk-b) 0 50%) 0 0/8px 8px}
+  .stage{
+    position:relative;height:470px;overflow:hidden;margin-top:-12px;
+    background:radial-gradient(ellipse 70% 60% at 50% 40%, var(--stage-a), var(--stage-b) 75%);
+    border:1px solid var(--stage-edge);border-top:0;
+    cursor:grab;touch-action:pan-y;
+  }
+  .stage.dragging{cursor:grabbing}
+  .stage canvas{display:block;width:100%;height:100%}
+  .stage canvas:focus-visible{outline:2px solid var(--accent-fill);outline-offset:-4px}
+  .nametag{
+    position:absolute;left:0;top:0;pointer-events:none;will-change:transform;
+    font-family:var(--display);font-weight:500;font-size:15px;line-height:1;color:#FFFFFF;
+    text-shadow:2px 2px 0 #3F3F3F;background:rgba(0,0,0,.42);padding:4px 7px 5px;white-space:nowrap;
+  }
+  .nogl{position:absolute;inset:0;display:grid;place-items:center;margin:0;padding:24px;text-align:center;color:#C9C3D6;font-size:.95rem}
+  .controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  .hint{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+  /* Experience */
+  .exp h2{font-family:var(--display);font-weight:600;font-size:1.75rem;line-height:1.1;margin:0 0 20px;text-wrap:balance}
+  .servers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .srv{background:var(--surface);border:1px solid var(--line);padding:24px;display:grid;gap:18px;align-content:start}
+  .srv-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+  .srv h3{font-family:var(--display);font-weight:600;font-size:1.45rem;line-height:1.1;margin:0}
+  .srv dl{margin:0;display:grid;gap:12px}
+  .srv dl div{display:grid;grid-template-columns:128px minmax(0,1fr);gap:4px 16px;padding-top:12px;border-top:1px solid var(--line)}
+  .srv dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+  .srv dd{margin:0}
+  .srv dd strong{font-weight:700}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:minmax(0,1fr);gap:32px}
+    .stage{height:420px}
+  }
+  @media (max-width:640px){
+    .wrap{padding-block:32px 56px;gap:48px}
+    .servers{grid-template-columns:minmax(0,1fr)}
+    .stage{height:380px}
+    .hint{margin-left:0;width:100%}
+    .srv dl div{grid-template-columns:minmax(0,1fr)}
+  }
+  @media (max-width:420px){
+    .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn,.tog{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Portafolio de staff · Minecraft</p>
+      <h1>iByp4ssedY0u_</h1>
+      <p class="intro">Ex-staff de dos servidores de Minecraft. Llegué a SrMod en DoomCraft y a Mod en MineBosh.</p>
+      <dl class="facts">
+        <div><dt>Servidores</dt><dd>2</dd></div>
+        <div><dt>Rango más alto</dt><dd><span class="mc srmod">[SrMod]</span></dd></div>
+        <div><dt>Salidas</dt><dd>Voluntarias</dd></div>
+      </dl>
+      <div class="nickrow">
+        <code class="nick" id="nick">iByp4ssedY0u_</code>
+        <button class="btn" id="copy" type="button">Copiar nick</button>
+      </div>
+    </div>
+
+    <figure class="viewer">
+      <div class="chk" aria-hidden="true"></div>
+      <div class="stage" id="stage">
+        <canvas id="skin3d" tabindex="0" role="img" aria-label="Skin de iByp4ssedY0u_ en 3D. Arrastra o usa las flechas del teclado para girarla."></canvas>
+        <div class="nametag" id="nametag" aria-hidden="true">iByp4ssedY0u_</div>
+        <p class="nogl" id="nogl" hidden>Este navegador no puede mostrar el modelo 3D.</p>
+      </div>
+      <figcaption class="controls">
+        <button class="tog" id="t-walk" type="button" aria-pressed="true">Caminar</button>
+        <button class="tog" id="t-spin" type="button" aria-pressed="true">Girar solo</button>
+        <button class="tog" id="t-layer" type="button" aria-pressed="true">Capa exterior</button>
+        <span class="hint">Arrastra para girar</span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="exp" aria-labelledby="exp-title">
+    <h2 id="exp-title">Experiencia como staff</h2>
+    <div class="servers">
+      <article class="srv">
+        <div class="srv-head">
+          <h3>DoomCraft</h3>
+          <span class="mc srmod">[SrMod]</span>
+        </div>
+        <dl>
+          <div><dt>Rango más alto</dt><dd><strong>SrMod</strong> (moderador sénior)</dd></div>
+          <div><dt>Salida</dt><dd>Por decisión propia</dd></div>
+          <div><dt>Motivo</dt><dd>El servidor había perdido mucha actividad y ya no tenía ganas de seguir.</dd></div>
+        </dl>
+      </article>
+      <article class="srv">
+        <div class="srv-head">
+          <h3>MineBosh</h3>
+          <span class="mc mod">[Mod]</span>
+        </div>
+        <dl>
+          <div><dt>Rango más alto</dt><dd><strong>Mod</strong> (moderador)</dd></div>
+          <div><dt>Salida</dt><dd>Por decisión propia</dd></div>
+          <div><dt>Motivo</dt><dd>No terminé de encajar con el equipo de staff y preferí dejarlo.</dd></div>
+        </dl>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+  document.documentElement.lang = "es";
+  (function () {
+    var btn = document.getElementById("copy");
+    var nick = document.getElementById("nick");
+    var reset = function () { btn.textContent = "Copiar nick"; };
+    var done = function () { btn.textContent = "Copiado"; setTimeout(reset, 1600); };
+    var fallback = function () {
+      var r = document.createRange();
+      r.selectNodeContents(nick);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      btn.textContent = "Seleccionado";
+      setTimeout(reset, 1600);
+    };
+    btn.addEventListener("click", function () {
+      try { navigator.clipboard.writeText(nick.textContent.trim()).then(done, fallback); }
+      catch (e) { fallback(); }
+    });
+  })();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  var stage = document.getElementById("stage");
+  var cv = document.getElementById("skin3d");
+  var tagEl = document.getElementById("nametag");
+
+  function fail() {
+    document.getElementById("nogl").hidden = false;
+    tagEl.hidden = true;
+    cv.hidden = true;
+  }
+  if (!window.THREE) { fail(); return; }
+
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
+  } catch (e) { fail(); return; }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.setClearColor(0x000000, 0);
+
+  /* ---------- Skin texture (64x64, standard Minecraft layout) ---------- */
+  var TX = document.createElement("canvas");
+  TX.width = 64; TX.height = 64;
+  var g = TX.getContext("2d");
+
+  function hash(x, y) {
+    var n = (x * 73856093) ^ (y * 19349663);
+    n = Math.imul(n ^ (n >>> 13), 1274126177);
+    n ^= n >>> 16;
+    return (n >>> 0) / 4294967296;
+  }
+  function pick(a, X, Y) { return a[Math.floor(hash(X, Y) * a.length)]; }
+
+  var SKIN = ["#574333", "#544131", "#584432", "#513F30"];
+  var SKIN_D = "#3E3024";
+  var LIGHT = ["#8A818A", "#837B84", "#777079"];
+  var DARK = ["#272727", "#1E1F1E", "#151615"];
+  var BAND = ["#111111", "#0C0C0C", "#161616"];
+  var SHORTS = ["#141514", "#0F0F0F", "#1A1A1A"];
+  var SPOT = ["#8A818A", "#6C666E"];
+  var PINK = "#DCB8B6", PUPIL = "#050505";
+
+  function faces(u, v, w, h, d) {
+    return {
+      top: [u + d, v, w, d], bottom: [u + d + w, v, w, d],
+      right: [u, v + d, d, h], front: [u + d, v + d, w, h],
+      left: [u + d + w, v + d, d, h], back: [u + 2 * d + w, v + d, w, h]
+    };
+  }
+  function paint(r, fn) {
+    for (var j = 0; j < r[3]; j++) for (var i = 0; i < r[2]; i++) {
+      var X = r[0] + i, Y = r[1] + j, col = fn(i, j, X, Y);
+      if (col) { g.fillStyle = col; g.fillRect(X, Y, 1, 1); }
+    }
+  }
+  function paintAll(F, fn) { for (var k in F) paint(F[k], fn); }
+  function skin(i, j, X, Y) { return pick(SKIN, X, Y); }
+  function chk(i, j, X, Y) { return ((i + j) & 1) ? pick(DARK, X, Y) : pick(LIGHT, X, Y); }
+  function band(i, j, X, Y) { return pick(BAND, X, Y); }
+  function shorts(i, j, X, Y) {
+    if (j > 4) return pick(SKIN, X, Y);
+    return hash(X * 3 + 7, Y * 5 + 1) > 0.8 ? pick(SPOT, X, Y) : pick(SHORTS, X, Y);
+  }
+
+  var UV = {
+    head: faces(0, 0, 8, 8, 8), headO: faces(32, 0, 8, 8, 8),
+    body: faces(16, 16, 8, 12, 4), bodyO: faces(16, 32, 8, 12, 4),
+    rArm: faces(40, 16, 4, 12, 4), rArmO: faces(40, 32, 4, 12, 4),
+    lArm: faces(32, 48, 4, 12, 4), lArmO: faces(48, 48, 4, 12, 4),
+    rLeg: faces(0, 16, 4, 12, 4), lLeg: faces(16, 48, 4, 12, 4)
+  };
+
+  // Head: face with pink eyes and open mouth
+  paintAll(UV.head, skin);
+  paint(UV.head.front, function (i, j) {
+    if (j === 4) {
+      if (i === 1 || i === 3 || i === 5 || i === 7) return PINK;
+      if (i === 2 || i === 6) return PUPIL;
+    }
+    if (j === 6 && i >= 3 && i <= 5) return PUPIL;
+    return null;
+  });
+  // Head scarf: grey/black check with a black band, hanging down the sides of the face
+  paint(UV.headO.top, chk);
+  ["right", "left", "back"].forEach(function (k) {
+    paint(UV.headO[k], function (i, j, X, Y) { return j === 1 ? band(i, j, X, Y) : chk(i, j, X, Y); });
+  });
+  paint(UV.headO.front, function (i, j, X, Y) {
+    if (j === 1) return band(i, j, X, Y);
+    if (j === 0 || j === 2) return chk(i, j, X, Y);
+    if (i === 0 || i === 7) return chk(i, j, X, Y);
+    return null;
+  });
+
+  // Body: bare chest, scarf over one shoulder and a strip hanging down the front
+  paintAll(UV.body, skin);
+  paint(UV.body.front, function (i, j) { return (j === 3 && (i === 1 || i === 6)) ? SKIN_D : null; });
+  paint(UV.bodyO.front, function (i, j, X, Y) { return ((i <= 1 && j <= 1) || (i === 6 && j <= 7)) ? chk(i, j, X, Y) : null; });
+  paint(UV.bodyO.top, function (i, j, X, Y) { return (i <= 2 || i === 6) ? chk(i, j, X, Y) : null; });
+  paint(UV.bodyO.back, function (i, j, X, Y) { return (j <= 1 && i >= 1 && i <= 6) ? chk(i, j, X, Y) : null; });
+
+  // Arms
+  paintAll(UV.rArm, skin);
+  paintAll(UV.lArm, skin);
+  paint(UV.rArmO.top, chk);
+  ["front", "right", "left", "back"].forEach(function (k) {
+    paint(UV.rArmO[k], function (i, j, X, Y) { return j === 0 ? chk(i, j, X, Y) : null; });
+  });
+  paint(UV.lArmO.top, function (i, j, X, Y) { return i <= 1 ? chk(i, j, X, Y) : null; });
+
+  // Legs: black shorts with grey spots
+  [UV.rLeg, UV.lLeg].forEach(function (F) {
+    paint(F.top, function (i, j, X, Y) { return pick(SHORTS, X, Y); });
+    paint(F.bottom, skin);
+    ["front", "right", "left", "back"].forEach(function (k) { paint(F[k], shorts); });
+  });
+
+  var tex = new THREE.CanvasTexture(TX);
+  tex.magFilter = THREE.NearestFilter;
+  tex.minFilter = THREE.NearestFilter;
+  tex.generateMipmaps = false;
+  tex.encoding = THREE.sRGBEncoding;
+
+  var matBase = new THREE.MeshLambertMaterial({ map: tex });
+  var matOver = new THREE.MeshLambertMaterial({ map: tex, alphaTest: 0.5, side: THREE.DoubleSide });
+
+  /* ---------- Model ---------- */
+  var ORDER = ["left", "right", "top", "bottom", "front", "back"]; // +x, -x, +y, -y, +z, -z
+  var overlays = [];
+  function part(w, h, d, F, over, y) {
+    var geo = new THREE.BoxGeometry(w, h, d);
+    var uv = geo.attributes.uv;
+    ORDER.forEach(function (k, f) {
+      var r = F[k];
+      var u0 = r[0] / 64, u1 = (r[0] + r[2]) / 64, vt = 1 - r[1] / 64, vb = 1 - (r[1] + r[3]) / 64;
+      uv.setXY(f * 4, u0, vt); uv.setXY(f * 4 + 1, u1, vt);
+      uv.setXY(f * 4 + 2, u0, vb); uv.setXY(f * 4 + 3, u1, vb);
+    });
+    uv.needsUpdate = true;
+    var m = new THREE.Mesh(geo, over ? matOver : matBase);
+    m.position.y = y || 0;
+    if (over) overlays.push(m);
+    return m;
+  }
+
+  var player = new THREE.Group();
+  var headG = new THREE.Group(); headG.position.set(0, 24, 0);
+  headG.add(part(8, 8, 8, UV.head, false, 4), part(9, 9, 9, UV.headO, true, 4));
+  var bodyG = new THREE.Group(); bodyG.position.set(0, 18, 0);
+  bodyG.add(part(8, 12, 4, UV.body, false), part(8.5, 12.5, 4.5, UV.bodyO, true));
+  var rArmG = new THREE.Group(); rArmG.position.set(-6, 22, 0);
+  rArmG.add(part(4, 12, 4, UV.rArm, false, -4), part(4.5, 12.5, 4.5, UV.rArmO, true, -4));
+  var lArmG = new THREE.Group(); lArmG.position.set(6, 22, 0);
+  lArmG.add(part(4, 12, 4, UV.lArm, false, -4), part(4.5, 12.5, 4.5, UV.lArmO, true, -4));
+  var rLegG = new THREE.Group(); rLegG.position.set(-2, 12, 0);
+  rLegG.add(part(4, 12, 4, UV.rLeg, false, -6));
+  var lLegG = new THREE.Group(); lLegG.position.set(2, 12, 0);
+  lLegG.add(part(4, 12, 4, UV.lLeg, false, -6));
+  player.add(headG, bodyG, rArmG, lArmG, rLegG, lLegG);
+
+  // Soft ground shadow
+  var sc = document.createElement("canvas"); sc.width = sc.height = 64;
+  var sg = sc.getContext("2d");
+  var grd = sg.createRadialGradient(32, 32, 0, 32, 32, 32);
+  grd.addColorStop(0, "rgba(0,0,0,0.6)"); grd.addColorStop(1, "rgba(0,0,0,0)");
+  sg.fillStyle = grd; sg.fillRect(0, 0, 64, 64);
+  var shadow = new THREE.Mesh(new THREE.PlaneGeometry(20, 20),
+    new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(sc), transparent: true, depthWrite: false }));
+  shadow.rotation.x = -Math.PI / 2; shadow.position.y = 0.05;
+  player.add(shadow);
+
+  var anchor = new THREE.Object3D(); anchor.position.set(0, 35, 0);
+  player.add(anchor);
+
+  player.position.y = -16;
+  var yawG = new THREE.Group(); yawG.add(player);
+  var pitchG = new THREE.Group(); pitchG.add(yawG); pitchG.position.y = -2.5;
+
+  var scene = new THREE.Scene();
+  scene.add(pitchG);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.62));
+  var sun = new THREE.DirectionalLight(0xffffff, 0.55);
+  sun.position.set(0.6, 1, 1.2);
+  scene.add(sun);
+
+  var camera = new THREE.PerspectiveCamera(32, 1, 1, 500);
+  camera.position.set(0, 0, 74);
+  camera.lookAt(0, 0, 0);
+
+  /* ---------- Size ---------- */
+  var W = 1, H = 1;
+  function size() {
+    var r = stage.getBoundingClientRect();
+    W = Math.max(1, r.width); H = Math.max(1, r.height);
+    renderer.setSize(W, H, false);
+    camera.aspect = W / H;
+    camera.updateProjectionMatrix();
+  }
+  size();
+  if (window.ResizeObserver) new ResizeObserver(size).observe(stage);
+  else window.addEventListener("resize", size);
+
+  /* ---------- Controls ---------- */
+  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var walking = !calm, spinning = !calm, layer = true;
+  var yaw = 0.5, pitch = 0.12, drag = null;
+
+  cv.addEventListener("pointerdown", function (e) {
+    drag = { x: e.clientX, y: e.clientY, yaw: yaw, pitch: pitch };
+    try { cv.setPointerCapture(e.pointerId); } catch (err) {}
+    stage.classList.add("dragging");
+  });
+  cv.addEventListener("pointermove", function (e) {
+    if (!drag) return;
+    yaw = drag.yaw + (e.clientX - drag.x) * 0.012;
+    pitch = Math.max(-0.45, Math.min(0.6, drag.pitch + (e.clientY - drag.y) * 0.006));
+  });
+  function endDrag() { drag = null; stage.classList.remove("dragging"); }
+  cv.addEventListener("pointerup", endDrag);
+  cv.addEventListener("pointercancel", endDrag);
+  cv.addEventListener("keydown", function (e) {
+    var used = true;
+    if (e.key === "ArrowLeft") yaw -= 0.25;
+    else if (e.key === "ArrowRight") yaw += 0.25;
+    else if (e.key === "ArrowUp") pitch = Math.max(-0.45, pitch - 0.1);
+    else if (e.key === "ArrowDown") pitch = Math.min(0.6, pitch + 0.1);
+    else used = false;
+    if (used) e.preventDefault();
+  });
+
+  function bindToggle(id, get, set) {
+    var b = document.getElementById(id);
+    b.setAttribute("aria-pressed", String(get()));
+    b.addEventListener("click", function () {
+      set(!get());
+      b.setAttribute("aria-pressed", String(get()));
+    });
+  }
+  bindToggle("t-walk", function () { return walking; }, function (v) { walking = v; });
+  bindToggle("t-spin", function () { return spinning; }, function (v) { spinning = v; });
+  bindToggle("t-layer", function () { return layer; }, function (v) {
+    layer = v;
+    overlays.forEach(function (m) { m.visible = v; });
+  });
+
+  /* ---------- Loop ---------- */
+  var clock = new THREE.Clock();
+  var phase = 0, amp = walking ? 1 : 0, v3 = new THREE.Vector3();
+  function frame() {
+    var dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
+    amp += ((walking ? 1 : 0) - amp) * Math.min(1, dt * 6);
+    phase += dt * 6.2 * amp;
+    var sw = Math.sin(phase) * 0.6 * amp;
+    rArmG.rotation.x = sw; lArmG.rotation.x = -sw;
+    rLegG.rotation.x = -sw; lLegG.rotation.x = sw;
+    var breathe = calm ? 0 : Math.sin(t * 1.6) * 0.035;
+    rArmG.rotation.z = -(0.04 + breathe);
+    lArmG.rotation.z = 0.04 + breathe;
+    if (spinning && !drag) yaw += dt * 0.45;
+    yawG.rotation.y = yaw;
+    pitchG.rotation.x = pitch;
+    renderer.render(scene, camera);
+
+    anchor.getWorldPosition(v3);
+    v3.project(camera);
+    tagEl.style.transform = "translate(" + ((v3.x + 1) / 2 * W).toFixed(1) + "px," +
+      ((1 - v3.y) / 2 * H).toFixed(1) + "px) translate(-50%,-100%)";
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
